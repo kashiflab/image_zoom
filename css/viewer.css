@@ -1,0 +1,186 @@
+/* ==========================================================================
+   TradingView Image Viewer - Viewer & Canvas Stylesheet
+   Full-Screen Canvas, Subtle Grid Colors, Drop Zone, & Floating Controls
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Canvas Viewport Main Container
+   -------------------------------------------------------------------------- */
+.canvas-viewport {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - var(--toolbar-height));
+  height: calc(100dvh - var(--toolbar-height));
+  background-color: var(--tv-bg-base);
+
+  /* TradingView Subtle Grid Lines Background */
+  background-image: 
+    linear-gradient(to right, var(--tv-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--tv-grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle outer grid glow on viewport hover */
+.canvas-viewport::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+/* --------------------------------------------------------------------------
+   Full-Screen Canvas Styling
+   -------------------------------------------------------------------------- */
+canvas, #imageCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  transform: translateZ(0);
+  will-change: transform;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* --------------------------------------------------------------------------
+   Drag & Drop Zone Overlay
+   -------------------------------------------------------------------------- */
+.drop-zone {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(19, 23, 34, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px dashed var(--tv-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 1;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.drop-zone.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drop-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 48px;
+  background: var(--tv-bg-surface);
+  border: 1px solid var(--tv-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(0);
+  transition: transform 0.2s ease;
+}
+
+.drop-zone:hover .drop-content {
+  transform: translateY(-4px);
+}
+
+.drop-content svg {
+  color: var(--tv-blue);
+  filter: drop-shadow(0 0 8px var(--tv-blue-glow));
+}
+
+.drop-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--tv-text-bright);
+  letter-spacing: -0.2px;
+}
+
+/* --------------------------------------------------------------------------
+   Quick Floating Controls (Mobile & Desktop Touch Friendly)
+   -------------------------------------------------------------------------- */
+.floating-controls {
+  position: absolute;
+  bottom: calc(20px + var(--safe-bottom));
+  right: calc(20px + var(--safe-right));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 90;
+}
+
+.float-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--tv-bg-surface-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--tv-border);
+  color: var(--tv-text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.float-btn:hover {
+  background-color: var(--tv-bg-hover);
+  color: var(--tv-text-bright);
+  border-color: var(--tv-border-bright);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.float-btn:active {
+  background-color: var(--tv-bg-active);
+  transform: scale(0.95);
+}
+
+.float-btn:focus-visible {
+  border-color: var(--tv-blue);
+  box-shadow: 0 0 0 2px var(--tv-blue-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile & Notch Safe Area Adaptation
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .canvas-viewport {
+    background-size: 24px 24px;
+  }
+
+  .floating-controls {
+    bottom: calc(16px + var(--safe-bottom));
+    right: calc(16px + var(--safe-right));
+    gap: 6px;
+  }
+
+  .float-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .drop-content {
+    padding: 24px 32px;
+  }
+}

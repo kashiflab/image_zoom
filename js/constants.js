@@ -1,0 +1,33 @@
+/**
+ * TradingView Image Viewer - Constants & Configuration
+ */
+
+const CAMERA_DEFAULTS = {
+  MIN_ZOOM: 0.05,
+  MAX_ZOOM: 50.0,
+  DEFAULT_SCALE_X: 1.0,
+  DEFAULT_SCALE_Y: 1.0,
+  DEFAULT_OFFSET_X: 0,
+  DEFAULT_OFFSET_Y: 0,
+  PADDING_RATIO: 0.92,
+};
+
+const THEME = {
+  BG_COLOR: '#131722',
+  GRID_MAJOR: '#1f232d',
+  GRID_MINOR: '#161922',
+  BORDER_COLOR: '#2a2e39',
+  CROSSHAIR_COLOR: '#787b86',
+  CROSSHAIR_LABEL_BG: '#2a2e39',
+  CROSSHAIR_LABEL_TEXT: '#d1d4dc',
+  ACCENT_COLOR: '#2962ff',
+  TEXT_MUTED: '#787b86',
+  TEXT_PRIMARY: '#d1d4dc',
+};
+
+const GRID_DEFAULTS = {
+  BASE_STEP: 40,
+  MIN_CELL_SIZE: 20,
+  MAX_CELL_SIZE: 100,
+  SHOW_CROSSHAIR: true,
+};
