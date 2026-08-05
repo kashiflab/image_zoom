@@ -75,9 +75,9 @@ class Renderer {
     }
 
     // 4. Render TradingView Interactive Crosshair Overlay
-    if (cursorState.isInside) {
-      this.drawCrosshair(ctx, cursorState.x, cursorState.y, viewportWidth, viewportHeight, image);
-    }
+    // if (cursorState.isInside) {
+    //   this.drawCrosshair(ctx, cursorState.x, cursorState.y, viewportWidth, viewportHeight, image);
+    // }
 
     ctx.restore();
   }
