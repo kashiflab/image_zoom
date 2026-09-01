@@ -9,7 +9,7 @@
 .tv-toolbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: calc(var(--toolbar-height) + var(--safe-top));
   padding-top: var(--safe-top);
   padding-left: calc(12px + var(--safe-left));

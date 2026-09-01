@@ -122,24 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toolbar Instance with bound actions
   const toolbar = new Toolbar({
-    onFit: () => fitToScreen(),
-    onReset: () => resetView(),
-    onToggleLockX: (isLocked) => {
-      camera.lockX = isLocked;
-      render();
-    },
-    onToggleLockY: (isLocked) => {
-      camera.lockY = isLocked;
-      render();
-    },
-    onZoomIn: () => {
-      const { viewW, viewH } = getDimensions();
-      zoomAtPoint(1.25, 1.25, viewW / 2, viewH / 2);
-    },
-    onZoomOut: () => {
-      const { viewW, viewH } = getDimensions();
-      zoomAtPoint(0.8, 0.8, viewW / 2, viewH / 2);
-    },
+    // onFit: () => fitToScreen(),
+    // onReset: () => resetView(),
+    // onToggleLockX: (isLocked) => {
+    //   camera.lockX = isLocked;
+    //   render();
+    // },
+    // onToggleLockY: (isLocked) => {
+    //   camera.lockY = isLocked;
+    //   render();
+    // },
+    // onZoomIn: () => {
+    //   const { viewW, viewH } = getDimensions();
+    //   zoomAtPoint(1.25, 1.25, viewW / 2, viewH / 2);
+    // },
+    // onZoomOut: () => {
+    //   const { viewW, viewH } = getDimensions();
+    //   zoomAtPoint(0.8, 0.8, viewW / 2, viewH / 2);
+    // },
   });
 
   // Modular Image Loader Instance
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     onImageLoaded: (loadedImage, fileName, src) => {
       image = loadedImage;
       currentFileName = fileName || 'Image';
-      toolbar.setFileName(currentFileName);
+      // toolbar.setFileName(currentFileName);
       fitToScreen();
 
       // Persist to IndexedDB for automatic startup restoration
@@ -186,18 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Main Render Pass & UI Update
   function render() {
     renderer.render(image, cursorState);
-
-    // Synchronize Toolbar Readouts
-    toolbar.updateZoomReadout(camera.scaleX, camera.scaleY);
-    toolbar.setLockX(camera.lockX);
-    toolbar.setLockY(camera.lockY);
-
-    if (cursorState.isInside && image) {
-      const world = camera.screenToWorld(cursorState.x, cursorState.y);
-      toolbar.updateCoordinates(world.x, world.y, true);
-    } else {
-      toolbar.updateCoordinates(null, null, false);
-    }
   }
 
   // Dynamic canvas resizing
@@ -302,26 +290,26 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         imageLoader.openFileDialog();
         break;
-      case 'f':
-        e.preventDefault();
-        fitToScreen();
-        break;
-      case 'r':
-        e.preventDefault();
-        resetView();
-        break;
-      case 'x':
-        e.preventDefault();
-        camera.lockX = !camera.lockX;
-        toolbar.setLockX(camera.lockX);
-        render();
-        break;
-      case 'y':
-        e.preventDefault();
-        camera.lockY = !camera.lockY;
-        toolbar.setLockY(camera.lockY);
-        render();
-        break;
+      // case 'f':
+      //   e.preventDefault();
+      //   fitToScreen();
+      //   break;
+      // case 'r':
+      //   e.preventDefault();
+      //   resetView();
+      //   break;
+      // case 'x':
+      //   e.preventDefault();
+      //   camera.lockX = !camera.lockX;
+      //   toolbar.setLockX(camera.lockX);
+      //   render();
+      //   break;
+      // case 'y':
+      //   e.preventDefault();
+      //   camera.lockY = !camera.lockY;
+      //   toolbar.setLockY(camera.lockY);
+      //   render();
+      //   break;
       case '=':
       case '+':
         e.preventDefault();

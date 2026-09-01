@@ -40,45 +40,45 @@ class Toolbar {
    * Attach click event listeners for toolbar actions
    */
   bindEvents() {
-    if (this.btnFit) {
-      this.btnFit.addEventListener('click', () => {
-        if (this.onFit) this.onFit();
-      });
-    }
+    // if (this.btnFit) {
+    //   this.btnFit.addEventListener('click', () => {
+    //     if (this.onFit) this.onFit();
+    //   });
+    // }
 
-    if (this.btnReset) {
-      this.btnReset.addEventListener('click', () => {
-        if (this.onReset) this.onReset();
-      });
-    }
+    // if (this.btnReset) {
+    //   this.btnReset.addEventListener('click', () => {
+    //     if (this.onReset) this.onReset();
+    //   });
+    // }
 
-    if (this.btnLockX) {
-      this.btnLockX.addEventListener('click', () => {
-        const isLocked = !this.btnLockX.classList.contains('active');
-        this.setLockX(isLocked);
-        if (this.onToggleLockX) this.onToggleLockX(isLocked);
-      });
-    }
+    // if (this.btnLockX) {
+    //   this.btnLockX.addEventListener('click', () => {
+    //     const isLocked = !this.btnLockX.classList.contains('active');
+    //     this.setLockX(isLocked);
+    //     if (this.onToggleLockX) this.onToggleLockX(isLocked);
+    //   });
+    // }
 
-    if (this.btnLockY) {
-      this.btnLockY.addEventListener('click', () => {
-        const isLocked = !this.btnLockY.classList.contains('active');
-        this.setLockY(isLocked);
-        if (this.onToggleLockY) this.onToggleLockY(isLocked);
-      });
-    }
+    // if (this.btnLockY) {
+    //   this.btnLockY.addEventListener('click', () => {
+    //     const isLocked = !this.btnLockY.classList.contains('active');
+    //     this.setLockY(isLocked);
+    //     if (this.onToggleLockY) this.onToggleLockY(isLocked);
+    //   });
+    // }
 
-    if (this.floatZoomIn) {
-      this.floatZoomIn.addEventListener('click', () => {
-        if (this.onZoomIn) this.onZoomIn();
-      });
-    }
+    // if (this.floatZoomIn) {
+    //   this.floatZoomIn.addEventListener('click', () => {
+    //     if (this.onZoomIn) this.onZoomIn();
+    //   });
+    // }
 
-    if (this.floatZoomOut) {
-      this.floatZoomOut.addEventListener('click', () => {
-        if (this.onZoomOut) this.onZoomOut();
-      });
-    }
+    // if (this.floatZoomOut) {
+    //   this.floatZoomOut.addEventListener('click', () => {
+    //     if (this.onZoomOut) this.onZoomOut();
+    //   });
+    // }
   }
 
   /**
@@ -130,9 +130,9 @@ class Toolbar {
   /**
    * Update file title display in brand header
    */
-  setFileName(fileName) {
-    if (this.brandTitle && fileName) {
-      this.brandTitle.textContent = `TV Viewer - ${fileName}`;
-    }
-  }
+  // setFileName(fileName) {
+  //   if (this.brandTitle && fileName) {
+  //     this.brandTitle.textContent = `TV Viewer - ${fileName}`;
+  //   }
+  // }
 }
